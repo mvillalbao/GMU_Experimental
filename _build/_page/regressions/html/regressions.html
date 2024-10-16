@@ -1,0 +1,1642 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Practice - Model Specification &#8212; My Jupyter Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'regressions';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">My Jupyter Book</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1 current active">
+                <a class="reference internal" href="#">
+                    Practice - Model Specification
+                </a>
+            </li>
+        </ul>
+        
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/regressions.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Practice - Model Specification</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-data">Importing Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">Data Cleaning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-analysis">Data Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-1-continuous-y-and-continuous-x-with-intercept">Case 1: Continuous Y and continuous X with intercept</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-2-continuous-y-and-binary-dummy-x-with-intercept">Case 2: Continuous Y and binary/dummy X with intercept</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-3-continuous-y-and-binary-dummy-x-without-intercept">Case 3: Continuous Y and binary/dummy X without intercept</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-4-binary-dummy-y-and-continuous-x-with-intercept">Case 4: Binary/dummy Y and Continuous X with intercept</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-5-binary-dummy-y-and-binary-dummy-x-with-intercept">Case 5: Binary/dummy Y and Binary/dummy X with intercept</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-6-continuous-y-and-categorical-x-with-intercept">Case 6: Continuous Y and categorical X with intercept</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#result-table-with-sjplot-package">Result table with “sjPlot” Package</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#result-table-with-stargazer-package">Result table with “stargazer” Package</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-coefs-across-models">Plotting Coefs. Across Models</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="practice-model-specification">
+<h1>Practice - Model Specification<a class="headerlink" href="#practice-model-specification" title="Link to this heading">#</a></h1>
+<section id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">readr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="importing-data">
+<h2>Importing Data<a class="headerlink" href="#importing-data" title="Link to this heading">#</a></h2>
+<p>For this practice we will be using the U.S. Current Population Survey (2015) dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">urlfile</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;https://raw.githubusercontent.com/mvillalbao/CausalInferenceML/refs/heads/main/data/wage2015_subsample_inference.csv&quot;</span>
+
+<span class="n">data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read_csv</span><span class="p">(</span><span class="nf">url</span><span class="p">(</span><span class="n">urlfile</span><span class="p">))</span>
+<span class="nf">head</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold">Rows: </span><span class=" -Color -Color-Blue">5150</span> <span class=" -Color -Color-Bold">Columns: </span><span class=" -Color -Color-Blue">21</span>
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Cyan">──</span> <span class=" -Color -Color-Bold">Column specification</span> <span class=" -Color -Color-Cyan">────────────────────────────────────────────────────────────────────────────────────────────────</span>
+<span class=" -Color -Color-Bold">Delimiter:</span> &quot;,&quot;
+<span class=" -Color -Color-Green">dbl</span> (21): rownames, wage, lwage, sex, shs, hsg, scl, clg, ad, mw, so, we, ne...
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Cyan">ℹ</span> Use `spec()` to retrieve the full column specification for this data.
+<span class=" -Color -Color-Cyan">ℹ</span> Specify the column types or set `show_col_types = FALSE` to quiet this message.
+</pre></div>
+</div>
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 6 × 21</caption>
+<thead>
+	<tr><th scope=col>rownames</th><th scope=col>wage</th><th scope=col>lwage</th><th scope=col>sex</th><th scope=col>shs</th><th scope=col>hsg</th><th scope=col>scl</th><th scope=col>clg</th><th scope=col>ad</th><th scope=col>mw</th><th scope=col>⋯</th><th scope=col>we</th><th scope=col>ne</th><th scope=col>exp1</th><th scope=col>exp2</th><th scope=col>exp3</th><th scope=col>exp4</th><th scope=col>occ</th><th scope=col>occ2</th><th scope=col>ind</th><th scope=col>ind2</th></tr>
+	<tr><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>⋯</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>10</td><td> 9.615385</td><td>2.263364</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>⋯</td><td>0</td><td>1</td><td> 7</td><td>0.49</td><td> 0.343</td><td> 0.2401</td><td>3600</td><td>11</td><td>8370</td><td>18</td></tr>
+	<tr><td>12</td><td>48.076923</td><td>3.872802</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>⋯</td><td>0</td><td>1</td><td>31</td><td>9.61</td><td>29.791</td><td>92.3521</td><td>3050</td><td>10</td><td>5070</td><td> 9</td></tr>
+	<tr><td>15</td><td>11.057692</td><td>2.403126</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>⋯</td><td>0</td><td>1</td><td>18</td><td>3.24</td><td> 5.832</td><td>10.4976</td><td>6260</td><td>19</td><td> 770</td><td> 4</td></tr>
+	<tr><td>18</td><td>13.942308</td><td>2.634928</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>⋯</td><td>0</td><td>1</td><td>25</td><td>6.25</td><td>15.625</td><td>39.0625</td><td> 420</td><td> 1</td><td>6990</td><td>12</td></tr>
+	<tr><td>19</td><td>28.846154</td><td>3.361977</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>⋯</td><td>0</td><td>1</td><td>22</td><td>4.84</td><td>10.648</td><td>23.4256</td><td>2015</td><td> 6</td><td>9470</td><td>22</td></tr>
+	<tr><td>30</td><td>11.730769</td><td>2.462215</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>⋯</td><td>0</td><td>1</td><td> 1</td><td>0.01</td><td> 0.001</td><td> 0.0001</td><td>1650</td><td> 5</td><td>7460</td><td>14</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<p><strong>Variable dictionary</strong></p>
+<ul class="simple">
+<li><p>occ : occupational classification</p></li>
+<li><p>ind : industry classification</p></li>
+<li><p>lwage : log hourly wage</p></li>
+<li><p>sex : gender (1 female) (0 male)</p></li>
+<li><p>shs : some high school</p></li>
+<li><p>hsg : High school graduated</p></li>
+<li><p>scl : Some College</p></li>
+<li><p>clg: College Graduate</p></li>
+<li><p>ad: Advanced Degree</p></li>
+<li><p>ne: Northeast</p></li>
+<li><p>mw: Midwest</p></li>
+<li><p>so: South</p></li>
+<li><p>we: West</p></li>
+<li><p>exp1: experience</p></li>
+</ul>
+</section>
+<section id="data-cleaning">
+<h2>Data Cleaning<a class="headerlink" href="#data-cleaning" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the variable &#39;high_wage&#39;</span>
+<span class="n">data</span><span class="o">$</span><span class="n">high_wage</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ifelse</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">wage</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">wage</span><span class="p">),</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
+
+<span class="c1"># Create the variable &#39;college_or_above&#39;</span>
+<span class="n">data</span><span class="o">$</span><span class="n">college_or_above</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ifelse</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">clg</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">data</span><span class="o">$</span><span class="n">ad</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="m">0</span><span class="p">)</span>
+
+<span class="c1"># Create the education variable based on the highest level of education attained</span>
+<span class="n">data</span><span class="o">$</span><span class="n">education</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">factor</span><span class="p">(</span><span class="nf">ifelse</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">ad</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;AD&quot;</span><span class="p">,</span><span class="w">       </span><span class="c1"># Advanced Degree</span>
+<span class="w">                                </span><span class="nf">ifelse</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">clg</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CLG&quot;</span><span class="p">,</span><span class="w">  </span><span class="c1"># College Degree</span>
+<span class="w">                                </span><span class="nf">ifelse</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">scl</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SCL&quot;</span><span class="p">,</span><span class="w">  </span><span class="c1"># Some College</span>
+<span class="w">                                </span><span class="nf">ifelse</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">hsg</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;HSG&quot;</span><span class="p">,</span><span class="w">  </span><span class="c1"># High School Grad</span>
+<span class="w">                                </span><span class="nf">ifelse</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">shs</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SHS&quot;</span><span class="p">,</span><span class="w">  </span><span class="c1"># Some High School</span>
+<span class="w">                                </span><span class="s">&quot;NONE&quot;</span><span class="p">))))),</span><span class="w">                 </span><span class="c1"># No education</span>
+<span class="w">                         </span><span class="n">levels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;NONE&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SHS&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;HSG&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;SCL&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;CLG&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;AD&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="data-analysis">
+<h2>Data Analysis<a class="headerlink" href="#data-analysis" title="Link to this heading">#</a></h2>
+<section id="case-1-continuous-y-and-continuous-x-with-intercept">
+<h3>Case 1: Continuous Y and continuous X with intercept<a class="headerlink" href="#case-1-continuous-y-and-continuous-x-with-intercept" title="Link to this heading">#</a></h3>
+<p>In this first case, we may want to explore how <strong>experience</strong> (<code class="docutils literal notranslate"><span class="pre">exp2</span></code>) relates to <strong>wage</strong> (our dependent variable). Since both <strong>experience</strong> and <strong>wage</strong> are continuous variables, we can apply a simple linear regression model with an intercept to capture this relationship.</p>
+<p><strong>Regression Model</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{wage} = \beta_0 + \beta_1 \cdot \text{experience} + \epsilon
+\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \beta_0 \)</span>: The <strong>intercept</strong>, representing the expected wage when experience is 0. This provides a baseline estimate.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \beta_1 \)</span>: The <strong>slope coefficient</strong> on experience, which tells us how much we expect <strong>wage</strong> to change for a <strong>one-unit increase</strong> in experience (i.e., for each additional year of experience).</p></li>
+</ul>
+<p><strong>Interpretation</strong>:
+In this context, the coefficient <span class="math notranslate nohighlight">\( \beta_1 \)</span> on <strong>experience</strong> is interpreted as the <strong>marginal effect</strong> of an additional year of experience on wage. For instance, if <span class="math notranslate nohighlight">\( \beta_1 = 2 \)</span>, it would mean that for every additional year of experience, wage is predicted to increase by 2 units.</p>
+<p>Let’s now estimate this relationship and review the regression output to interpret the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">model1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">wage</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">exp2</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">)</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">model1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Call:
+lm(formula = wage ~ exp2, data = data)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-22.62 -10.07  -4.24   4.23 505.55 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 22.64819    0.36626  61.836  &lt; 2e-16 ***
+exp2         0.25248    0.07308   3.455 0.000555 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 20.98 on 5148 degrees of freedom
+Multiple R-squared:  0.002313,	Adjusted R-squared:  0.002119 
+F-statistic: 11.94 on 1 and 5148 DF,  p-value: 0.0005551
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract the coefficients from the model</span>
+<span class="n">coef_model1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">summary</span><span class="p">(</span><span class="n">model1</span><span class="p">)</span><span class="o">$</span><span class="n">coefficients</span>
+
+<span class="c1"># Extract the specific coefficient</span>
+<span class="n">beta_1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">coef_model1</span><span class="p">[</span><span class="s">&quot;exp2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Estimate&quot;</span><span class="p">]</span>
+<span class="n">beta_0</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">coef_model1</span><span class="p">[</span><span class="s">&quot;(Intercept)&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Estimate&quot;</span><span class="p">]</span>
+
+<span class="nf">cat</span><span class="p">(</span><span class="s">&quot;The coefficient on experience (exp2) is&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">beta_1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span>
+<span class="w">      </span><span class="s">&quot;, which indicates that for every additional year of experience, the wage is predicted to increase by approximately&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nf">round</span><span class="p">(</span><span class="n">beta_1</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;units, holding all other factors constant.\n&quot;</span><span class="p">)</span>
+
+<span class="nf">cat</span><span class="p">(</span><span class="s">&quot;The intercept is&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">beta_0</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span>
+<span class="w">      </span><span class="s">&quot;, which means that the expected wage for someone with zero years of experience is&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nf">round</span><span class="p">(</span><span class="n">beta_0</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;units.\n&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The coefficient on experience (exp2) is 0.25 , which indicates that for every additional year of experience, the wage is predicted to increase by approximately 0.25 units, holding all other factors constant.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The intercept is 22.65 , which means that the expected wage for someone with zero years of experience is 22.65 units.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="case-2-continuous-y-and-binary-dummy-x-with-intercept">
+<h3>Case 2: Continuous Y and binary/dummy X with intercept<a class="headerlink" href="#case-2-continuous-y-and-binary-dummy-x-with-intercept" title="Link to this heading">#</a></h3>
+<p>We may also want to understand how <strong>gender</strong> (represented by the dummy variable <code class="docutils literal notranslate"><span class="pre">sex</span></code>, where 1 indicates female and 0 indicates male) affects <strong>wage</strong>. The dependent variable <strong>wage</strong> is continuous, while <strong>gender</strong> is categorical (binary).</p>
+<p><strong>Regression Model</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{wage} = \beta_0 + \beta_1 \cdot \text{gender} + \epsilon
+\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \beta_0 \)</span>: The <strong>intercept</strong>, representing the expected wage for the reference category (in this case, females when <code class="docutils literal notranslate"><span class="pre">sex</span> <span class="pre">=</span> <span class="pre">0</span></code>).</p></li>
+<li><p><span class="math notranslate nohighlight">\( \beta_1 \)</span>: The coefficient for the <strong>gender</strong> dummy variable, which tells us how much the expected wage changes for females relative to males.</p></li>
+</ul>
+<p><strong>Interpretation</strong>:
+Here, the coefficient <span class="math notranslate nohighlight">\( \beta_1 \)</span> on the <strong>gender</strong> dummy variable is interpreted as the <strong>difference in means</strong> between the two groups. Specifically:</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\( \beta_1 &gt; 0 \)</span>, it indicates that females (when <code class="docutils literal notranslate"><span class="pre">sex</span> <span class="pre">=</span> <span class="pre">1</span></code>) earn more on average than males (the reference group, <code class="docutils literal notranslate"><span class="pre">sex</span> <span class="pre">=</span> <span class="pre">0</span></code>), by the amount of the coefficient.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\( \beta_1 &lt; 0 \)</span>, it suggests that females earn less on average than males, again by the value of the coefficient.</p></li>
+</ul>
+<p>This model is useful when we want to compare the means of two groups, with the intercept giving us the mean wage for the reference group and the coefficient indicating how the second group’s mean differs.</p>
+<p>Let’s estimate this model and interpret the regression output.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">$</span><span class="n">sex</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.factor</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">sex</span><span class="p">)</span>
+<span class="n">model2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">wage</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">sex</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">)</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">model2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Call:
+lm(formula = wage ~ sex, data = data)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-21.00 -10.08  -4.38   4.51 504.83 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  24.0193     0.3925  61.196   &lt;2e-16 ***
+sex1         -1.3698     0.5887  -2.327     0.02 *  
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 20.99 on 5148 degrees of freedom
+Multiple R-squared:  0.001051,	Adjusted R-squared:  0.0008565 
+F-statistic: 5.414 on 1 and 5148 DF,  p-value: 0.02002
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract the coefficients from the model</span>
+<span class="n">coef_model2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">summary</span><span class="p">(</span><span class="n">model2</span><span class="p">)</span><span class="o">$</span><span class="n">coefficients</span>
+
+<span class="c1"># Extract the specific coefficient</span>
+<span class="n">beta_1_m2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">coef_model2</span><span class="p">[</span><span class="s">&quot;sex1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Estimate&quot;</span><span class="p">]</span>
+<span class="n">beta_0_m2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">coef_model2</span><span class="p">[</span><span class="s">&quot;(Intercept)&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Estimate&quot;</span><span class="p">]</span>
+
+<span class="nf">cat</span><span class="p">(</span><span class="s">&quot;The coefficient on the gender dummy variable (sex) is&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">beta_1_m2</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span>
+<span class="w">    </span><span class="s">&quot;, which indicates that females (sex = 1) are predicted to earn approximately&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="nf">round</span><span class="p">(</span><span class="n">beta_1_m2</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;units less than males (the reference group, sex = 0).\n&quot;</span><span class="p">)</span>
+
+<span class="nf">cat</span><span class="p">(</span><span class="s">&quot;The intercept is&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">beta_0_m2</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span>
+<span class="w">    </span><span class="s">&quot;, which means that the expected wage for males (sex = 0) is&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="nf">round</span><span class="p">(</span><span class="n">beta_0_m2</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;units.\n&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The coefficient on the gender dummy variable (sex) is -1.37 , which indicates that females (sex = 1) are predicted to earn approximately -1.37 units less than males (the reference group, sex = 0).
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The intercept is 24.02 , which means that the expected wage for males (sex = 0) is 24.02 units.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="case-3-continuous-y-and-binary-dummy-x-without-intercept">
+<h3>Case 3: Continuous Y and binary/dummy X without intercept<a class="headerlink" href="#case-3-continuous-y-and-binary-dummy-x-without-intercept" title="Link to this heading">#</a></h3>
+<p>In this case, we again want to explore the relationship between <strong>gender</strong> (<code class="docutils literal notranslate"><span class="pre">sex</span></code>) and <strong>wage</strong>, but now we will estimate the model <strong>without an intercept</strong>. This changes how we interpret the coefficients and allows us to directly estimate the average wage for both males and females.</p>
+<p><strong>Regression Model</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{wage} = \alpha_0 \cdot \text{gender} + \epsilon
+\]</div>
+<p>However, because gender is a dummy/factor variable, R reports:
+$<span class="math notranslate nohighlight">\(
+\text{wage} = \beta_1 \cdot \text{gender}_{\text{male}} + \beta_2 \cdot \text{gender}_{\text{female}} + \epsilon
+\)</span>$</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \beta_1 \)</span>: The expected wage for males (when <code class="docutils literal notranslate"><span class="pre">sex</span> <span class="pre">=</span> <span class="pre">1</span></code>).</p></li>
+<li><p><span class="math notranslate nohighlight">\( \beta_2 \)</span>: The expected wage for females (when <code class="docutils literal notranslate"><span class="pre">sex</span> <span class="pre">=</span> <span class="pre">0</span></code>).</p></li>
+</ul>
+<p><strong>Interpretation</strong>:
+Without an intercept, this regression model directly estimates the <strong>average wage</strong> for both males and females as separate coefficients:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \beta_1 \)</span> represents the average wage for males.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \beta_2 \)</span> represents the average wage for females.</p></li>
+</ul>
+<p>This setup is useful when we want to obtain a <strong>group-specific average</strong> for each category of the dummy variable, rather than interpreting the difference between a reference group and the other category. Each coefficient gives us the mean wage for that group without assuming any common baseline (as we did in previous models).</p>
+<p>Let’s estimate this model and interpret the regression output.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">model3</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">wage</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">sex</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="c1"># Removing the intercept</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">model3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Call:
+lm(formula = wage ~ sex - 1, data = data)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-21.00 -10.08  -4.38   4.51 504.83 
+
+Coefficients:
+     Estimate Std. Error t value Pr(&gt;|t|)    
+sex0  24.0193     0.3925   61.20   &lt;2e-16 ***
+sex1  22.6494     0.4388   51.62   &lt;2e-16 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 20.99 on 5148 degrees of freedom
+Multiple R-squared:  0.5546,	Adjusted R-squared:  0.5544 
+F-statistic:  3205 on 2 and 5148 DF,  p-value: &lt; 2.2e-16
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract the coefficients from the model (no intercept)</span>
+<span class="n">coef_model3</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">summary</span><span class="p">(</span><span class="n">model3</span><span class="p">)</span><span class="o">$</span><span class="n">coefficients</span>
+
+<span class="c1"># Extract the specific coefficients</span>
+<span class="n">beta_female_m3</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">coef_model3</span><span class="p">[</span><span class="s">&quot;sex1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Estimate&quot;</span><span class="p">]</span>
+<span class="n">beta_male_m3</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">coef_model3</span><span class="p">[</span><span class="s">&quot;sex0&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Estimate&quot;</span><span class="p">]</span>
+
+<span class="nf">cat</span><span class="p">(</span><span class="s">&quot;The coefficient for females (sex = 1) is&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">beta_female_m3</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span>
+<span class="w">    </span><span class="s">&quot;, which indicates that the expected wage for female is&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">beta_female_m3</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;units.\n&quot;</span><span class="p">)</span>
+
+<span class="nf">cat</span><span class="p">(</span><span class="s">&quot;The coefficient for males (sex = 0) is&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">beta_male_m3</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span>
+<span class="w">    </span><span class="s">&quot;, which indicates that the expected wage for males is&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">beta_male_m3</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;units.\n&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The coefficient for females (sex = 1) is 22.65 , which indicates that the expected wage for female is 22.65 units.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The coefficient for males (sex = 0) is 24.02 , which indicates that the expected wage for males is 24.02 units.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="case-4-binary-dummy-y-and-continuous-x-with-intercept">
+<h3>Case 4: Binary/dummy Y and Continuous X with intercept<a class="headerlink" href="#case-4-binary-dummy-y-and-continuous-x-with-intercept" title="Link to this heading">#</a></h3>
+<p>In a standard linear regression model with intercept, the relationship between the dependent variable <span class="math notranslate nohighlight">\( Y \)</span> and the independent variables <span class="math notranslate nohighlight">\( X \)</span> is expressed as:</p>
+<div class="math notranslate nohighlight">
+\[
+Y = \beta_0 + \beta_1 X + \epsilon
+\]</div>
+<p>Taking conditional expectations:</p>
+<div class="math notranslate nohighlight">
+\[
+E[Y | X] = \beta_0 + \beta_1 X
+\]</div>
+<p>The key insight here is that the expected value of a binary variable, taking values of 1 and 0, represents the probability that the variable takes the value 1. This can be mathematically expressed as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+E[Y | X] &amp;= 1 \cdot P(Y = 1 | X) + 0 \cdot P(Y = 0 | X) \\
+&amp;= P(Y = 1 | X)
+\end{align*}
+\end{split}\]</div>
+<p>Thus, the predicted values from a regression with a binary outcome variable can be interpreted as the <strong>probability</strong> that the outcome equals 1, given the independent variables.</p>
+<div class="math notranslate nohighlight">
+\[
+P(Y = 1 | X) = \beta_0 + \beta_1 X
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\( Y \)</span> is binary, <span class="math notranslate nohighlight">\( E[Y | X] \)</span> represents the probability that <span class="math notranslate nohighlight">\( Y = 1 \)</span>. Therefore, the regression coefficients <span class="math notranslate nohighlight">\( \beta_0 \)</span> and <span class="math notranslate nohighlight">\( \beta_1 \)</span> tell us how the <strong>probability</strong> of <span class="math notranslate nohighlight">\( Y = 1 \)</span> changes with <span class="math notranslate nohighlight">\( X \)</span>. Specifically, <span class="math notranslate nohighlight">\( \beta_1 \)</span> represents the <strong>change in the probability</strong> of <span class="math notranslate nohighlight">\( Y = 1 \)</span> for a one-unit change in <span class="math notranslate nohighlight">\( X \)</span>.</p>
+<p>We may want to, for example, evaluate the relationship between the binary variable <code class="docutils literal notranslate"><span class="pre">high_wage</span></code>, which equals 1 if the individual earns a higher wage than the mean wage and 0 otherwise, and the variable <code class="docutils literal notranslate"><span class="pre">exp2</span></code>.</p>
+<p><strong>Regression Model</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{high\_wage} = \beta_0 + \beta_1 \cdot \text{experience} + \epsilon
+\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \beta_0 \)</span>: The <strong>intercept</strong>, representing the predicted probability of earning a high wage when experience is 0.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \beta_1 \)</span>: The coefficient on experience, which tells us how the <strong>probability</strong> of earning a high wage changes with an additional year of experience.</p></li>
+</ul>
+<p><strong>Interpretation</strong>:
+In this model, the coefficient <span class="math notranslate nohighlight">\( \beta_1 \)</span> is interpreted as the <strong>change in probability</strong> of earning a high wage for a one-unit increase in experience. For example, if <span class="math notranslate nohighlight">\( \beta_1 = 0.05 \)</span>, it means that for each additional year of experience, the probability of earning a high wage increases by 5 percentage points.</p>
+<p>Let’s now estimate this model and interpret the output.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">model4</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">high_wage</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">exp2</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">)</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">model4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Call:
+lm(formula = high_wage ~ exp2, data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-0.4992 -0.3557 -0.3456  0.6308  0.6562 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 0.343814   0.008392  40.970  &lt; 2e-16 ***
+exp2        0.007034   0.001674   4.201 2.71e-05 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.4807 on 5148 degrees of freedom
+Multiple R-squared:  0.003416,	Adjusted R-squared:  0.003222 
+F-statistic: 17.65 on 1 and 5148 DF,  p-value: 2.705e-05
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract the coefficients from the linear probability model (LPM)</span>
+<span class="n">coef_model4</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">summary</span><span class="p">(</span><span class="n">model4</span><span class="p">)</span><span class="o">$</span><span class="n">coefficients</span>
+
+<span class="c1"># Extract the specific coefficients for intercept and experience</span>
+<span class="n">beta_0_m4</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">coef_model4</span><span class="p">[</span><span class="s">&quot;(Intercept)&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Estimate&quot;</span><span class="p">]</span>
+<span class="n">beta_1_m4</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">coef_model4</span><span class="p">[</span><span class="s">&quot;exp2&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Estimate&quot;</span><span class="p">]</span>
+
+<span class="nf">cat</span><span class="p">(</span><span class="s">&quot;The intercept is&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">beta_0_m4</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span>
+<span class="w">    </span><span class="s">&quot;, which indicates that the predicted probability of earning a high wage for someone with 0 years of experience is&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="nf">round</span><span class="p">(</span><span class="n">beta_0_m4</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;.\n&quot;</span><span class="p">)</span>
+
+<span class="nf">cat</span><span class="p">(</span><span class="s">&quot;The coefficient on experience is&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">beta_1_m4</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">),</span><span class="w"> </span>
+<span class="w">    </span><span class="s">&quot;, which indicates that for each additional year of experience, the probability of earning a high wage is predicted to increase&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="nf">round</span><span class="p">(</span><span class="n">beta_1_m4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;percentage points.\n&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The intercept is 0.34 , which indicates that the predicted probability of earning a high wage for someone with 0 years of experience is 0.34 .
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The coefficient on experience is 0.007 , which indicates that for each additional year of experience, the probability of earning a high wage is predicted to increase 0.7 percentage points.
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Limitations</strong>:
+While the Linear Probability Model (LPM) provides an easy-to-interpret estimate of the relationship between independent variables and the probability of an outcome, it has certain limitations. Most notably, the predicted probabilities can sometimes fall outside the range [0, 1], which is not meaningful for probabilities.</p>
+<p>It’s important to emphasize that the <strong>average marginal effect</strong> of <span class="math notranslate nohighlight">\( \beta_1 \)</span>, which represents the expected change in the probability of <span class="math notranslate nohighlight">\( Y = 1 \)</span> for a one-unit increase in <span class="math notranslate nohighlight">\( X \)</span>, is valid and informative. In other words, the statement that “an increase in <span class="math notranslate nohighlight">\( X \)</span> by 1 predicts an average increase in the probability of <span class="math notranslate nohighlight">\( Y = 1 \)</span> by <span class="math notranslate nohighlight">\( \beta_1 \)</span>“ is correct.</p>
+<p>However, the limitation arises when applying this <strong>average marginal effect</strong> to individual predictions for specific values of <span class="math notranslate nohighlight">\( X \)</span>. In some cases, the LPM can produce predicted probabilities outside the valid range of [0, 1]. For example, when a new value of <span class="math notranslate nohighlight">\( X \)</span> is input into the model, the linear nature of the LPM may result in probabilities greater than 1 or less than 0, which are not meaningful in a probabilistic context.</p>
+<p>Despite this, the LPM remains useful for providing a rough estimate of the marginal effects of the independent variables on the outcome, especially when the primary interest lies in understanding average effects rather than precise individual predictions.</p>
+</section>
+<section id="case-5-binary-dummy-y-and-binary-dummy-x-with-intercept">
+<h3>Case 5: Binary/dummy Y and Binary/dummy X with intercept<a class="headerlink" href="#case-5-binary-dummy-y-and-binary-dummy-x-with-intercept" title="Link to this heading">#</a></h3>
+<p>In this case, we want to examine the relationship between having at least a <strong>college degree</strong> (our binary independent variable <code class="docutils literal notranslate"><span class="pre">college_or_above</span></code>, where 1 indicates having a college or advanced degree and 0 indicates not) and the likelihood of earning a <strong>high wage</strong> (our binary dependent variable <code class="docutils literal notranslate"><span class="pre">high_wage</span></code>, where 1 represents being in the top 10% of wage earners, and 0 otherwise).</p>
+<p>Since both the dependent and independent variables are binary, the interpretation of the coefficients reflects the difference in <strong>probabilities</strong> between the two groups (those with a college degree and those without).</p>
+<p><strong>Regression Model</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{high\_wage} = \beta_0 + \beta_1 \cdot \text{college\_or\_above} + \epsilon
+\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \beta_0 \)</span>: The <strong>intercept</strong>, representing the predicted probability of earning a high wage for individuals who do <strong>not</strong> have a college degree (i.e., when <code class="docutils literal notranslate"><span class="pre">college_or_above</span> <span class="pre">=</span> <span class="pre">0</span></code>).</p></li>
+<li><p><span class="math notranslate nohighlight">\( \beta_1 \)</span>: The coefficient on <code class="docutils literal notranslate"><span class="pre">college_or_above</span></code>, representing the <strong>difference in probability</strong> of earning a high wage between those who have a college degree (or higher) and those who do not.</p></li>
+</ul>
+<p><strong>Interpretation</strong>:
+In this model, the coefficient <span class="math notranslate nohighlight">\( \beta_1 \)</span> is interpreted as the <strong>difference in the probability</strong> of earning a high wage for individuals with a college degree compared to those without one. Specifically:</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\( \beta_1 &gt; 0 \)</span>, it indicates that having a college degree increases the likelihood of earning a high wage compared to those without a degree.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\( \beta_1 &lt; 0 \)</span>, it suggests that having a college degree decreases the likelihood of earning a high wage compared to those without a degree.</p></li>
+</ul>
+<p><strong>Example</strong>:
+If <span class="math notranslate nohighlight">\( \beta_1 = 0.15 \)</span>, this means that on average individuals with a college degree are 15 percentage points more likely to earn a high wage compared to those without a degree. The intercept <span class="math notranslate nohighlight">\( \beta_0 \)</span> represents the baseline probability for individuals without a college degree.</p>
+<p><strong>Limitations</strong>:
+As with other Linear Probability Models, this specification may predict probabilities outside the [0, 1] range, which is not meaningful in a probabilistic context. However, it provides a useful approximation of the average marginal effects of education on wage outcomes.</p>
+<p>Let’s now estimate the model and interpret the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">model5</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">high_wage</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">college_or_above</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">)</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">model5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Call:
+lm(formula = high_wage ~ college_or_above, data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-0.5282 -0.2290 -0.2290  0.4718  0.7710 
+
+Coefficients:
+                 Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)      0.228989   0.008641   26.50   &lt;2e-16 ***
+college_or_above 0.299192   0.012814   23.35   &lt;2e-16 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.4579 on 5148 degrees of freedom
+Multiple R-squared:  0.09576,	Adjusted R-squared:  0.09558 
+F-statistic: 545.2 on 1 and 5148 DF,  p-value: &lt; 2.2e-16
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract the coefficients from the linear probability model (LPM)</span>
+<span class="n">coef_model5</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">summary</span><span class="p">(</span><span class="n">model5</span><span class="p">)</span><span class="o">$</span><span class="n">coefficients</span>
+
+<span class="c1"># Extract the specific coefficients for intercept and college_or_above</span>
+<span class="n">beta_0_m5</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">coef_model5</span><span class="p">[</span><span class="s">&quot;(Intercept)&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Estimate&quot;</span><span class="p">]</span>
+<span class="n">beta_1_m5</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">coef_model5</span><span class="p">[</span><span class="s">&quot;college_or_above&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Estimate&quot;</span><span class="p">]</span>
+
+<span class="nf">cat</span><span class="p">(</span><span class="s">&quot;The intercept is&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">beta_0_m5</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span>
+<span class="w">    </span><span class="s">&quot;, which indicates that the predicted probability of earning a high wage for someone without a college degree is&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="nf">round</span><span class="p">(</span><span class="n">beta_0_m5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;percentage points.\n&quot;</span><span class="p">)</span>
+
+<span class="nf">cat</span><span class="p">(</span><span class="s">&quot;The coefficient on college_or_above is&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">beta_1_m5</span><span class="p">,</span><span class="w"> </span><span class="m">4</span><span class="p">),</span><span class="w"> </span>
+<span class="w">    </span><span class="s">&quot;, which indicates that having a college degree (or higher) is predicted to increase the probability of earning a high wage by&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="nf">round</span><span class="p">(</span><span class="n">beta_1_m5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;percentage points compared to those without a college degree.\n&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The intercept is 0.23 , which indicates that the predicted probability of earning a high wage for someone without a college degree is 22.9 percentage points.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The coefficient on college_or_above is 0.2992 , which indicates that having a college degree (or higher) is predicted to increase the probability of earning a high wage by 29.92 percentage points compared to those without a college degree.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="case-6-continuous-y-and-categorical-x-with-intercept">
+<h3>Case 6: Continuous Y and categorical X with intercept<a class="headerlink" href="#case-6-continuous-y-and-categorical-x-with-intercept" title="Link to this heading">#</a></h3>
+<p>In this model, we aim to understand how different levels of education predict <strong>wage</strong>. The independent variable <code class="docutils literal notranslate"><span class="pre">education</span></code> is categorical, representing the highest level of education attained. The model compares the wages associated with each education level to the <strong>reference category</strong>, which is represented by the intercept. This reference category is the <strong>baseline group</strong> against which all other education levels are compared.</p>
+<p><strong>Regression Model</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{wage} = \beta_0 + \beta_1 \cdot \text{education}_1 + \beta_2 \cdot \text{education}_2 + \dots + \beta_n \cdot \text{education}_n + \epsilon
+\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\beta_0\)</span> (Intercept): This represents the <strong>average wage</strong> for individuals in the <strong>reference category</strong> (the base level of education).</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta_1, \beta_2, \dots, \beta_n\)</span>: These coefficients represent the <strong>difference in wage</strong> between individuals at each level of education and those in the reference category.</p></li>
+</ul>
+<p><strong>Interpretation</strong>:</p>
+<ul class="simple">
+<li><p>The <strong>intercept</strong> (<span class="math notranslate nohighlight">\(\beta_0\)</span>) represents the predicted average wage for individuals in the reference category. For example, if your reference group is individuals with <strong>Some High School</strong> education (<code class="docutils literal notranslate"><span class="pre">SHS</span></code>), the intercept will be the average wage for people who only have some high school education.</p></li>
+<li><p>The <strong>coefficients</strong> for other education levels (e.g., <code class="docutils literal notranslate"><span class="pre">HSG</span></code>, <code class="docutils literal notranslate"><span class="pre">SCL</span></code>, <code class="docutils literal notranslate"><span class="pre">CLG</span></code>, <code class="docutils literal notranslate"><span class="pre">AD</span></code>) represent the difference in expected wages compared to the reference group. These coefficients show how much more or less individuals with those levels of education are predicted to earn, relative to the reference group.</p></li>
+</ul>
+<p>Let’s now estimate the model and review the regression output to interpret the results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">table</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">education</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NONE  SHS  HSG  SCL  CLG   AD 
+   0  120 1256 1432 1636  706 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">model6</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">lm</span><span class="p">(</span><span class="n">wage</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">education</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Display the summary of the model</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">model6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Call:
+lm(formula = wage ~ education, data = data)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-30.09  -8.75  -3.58   3.84 505.51 
+
+Coefficients:
+             Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)    23.335      1.857  12.566  &lt; 2e-16 ***
+educationHSG   -6.005      1.944  -3.089  0.00202 ** 
+educationSCL   -2.928      1.933  -1.515  0.12995    
+educationCLG    3.167      1.924   1.646  0.09985 .  
+educationAD     9.830      2.009   4.894 1.02e-06 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 20.34 on 5145 degrees of freedom
+Multiple R-squared:  0.06259,	Adjusted R-squared:  0.06186 
+F-statistic: 85.88 on 4 and 5145 DF,  p-value: &lt; 2.2e-16
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract the coefficients from the linear regression model</span>
+<span class="n">coef_model6</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">summary</span><span class="p">(</span><span class="n">model6</span><span class="p">)</span><span class="o">$</span><span class="n">coefficients</span>
+
+<span class="c1"># Extract the specific coefficients for intercept and education levels</span>
+<span class="n">beta_0_m6</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">coef_model6</span><span class="p">[</span><span class="s">&quot;(Intercept)&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Estimate&quot;</span><span class="p">]</span>
+<span class="n">beta_hsg_m6</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">coef_model6</span><span class="p">[</span><span class="s">&quot;educationHSG&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Estimate&quot;</span><span class="p">]</span>
+<span class="n">beta_scl_m6</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">coef_model6</span><span class="p">[</span><span class="s">&quot;educationSCL&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Estimate&quot;</span><span class="p">]</span>
+<span class="n">beta_clg_m6</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">coef_model6</span><span class="p">[</span><span class="s">&quot;educationCLG&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Estimate&quot;</span><span class="p">]</span>
+<span class="n">beta_ad_m6</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">coef_model6</span><span class="p">[</span><span class="s">&quot;educationAD&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Estimate&quot;</span><span class="p">]</span>
+
+<span class="nf">cat</span><span class="p">(</span><span class="s">&quot;The intercept is&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">beta_0_m6</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span>
+<span class="w">    </span><span class="s">&quot;, which indicates that the predicted average wage for individuals in the reference category (Some High School) is&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="nf">round</span><span class="p">(</span><span class="n">beta_0_m6</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;units.\n&quot;</span><span class="p">)</span>
+
+<span class="nf">cat</span><span class="p">(</span><span class="s">&quot;The coefficient on High School Graduate is&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">beta_hsg_m6</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span>
+<span class="w">    </span><span class="s">&quot;, which indicates that individuals with a High School Diploma are predicted to earn&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="nf">round</span><span class="p">(</span><span class="n">beta_hsg_m6</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;units less compared to individuals with Some High School education.\n&quot;</span><span class="p">)</span>
+
+<span class="nf">cat</span><span class="p">(</span><span class="s">&quot;The coefficient on Some College is&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">beta_scl_m6</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span>
+<span class="w">    </span><span class="s">&quot;, which indicates that individuals with Some College are predicted to earn&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="nf">round</span><span class="p">(</span><span class="n">beta_scl_m6</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;units less compared to individuals with Some High School education.\n&quot;</span><span class="p">)</span>
+
+<span class="nf">cat</span><span class="p">(</span><span class="s">&quot;The coefficient on College Graduate is&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">beta_clg_m6</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span>
+<span class="w">    </span><span class="s">&quot;, which indicates that individuals with a College Degree are predicted to earn&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="nf">round</span><span class="p">(</span><span class="n">beta_clg_m6</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;units more compared to individuals with Some High School education.\n&quot;</span><span class="p">)</span>
+
+<span class="nf">cat</span><span class="p">(</span><span class="s">&quot;The coefficient on Advanced Degree is&quot;</span><span class="p">,</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">beta_ad_m6</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span>
+<span class="w">    </span><span class="s">&quot;, which indicates that individuals with an Advanced Degree are predicted to earn&quot;</span><span class="p">,</span><span class="w"> </span>
+<span class="w">    </span><span class="nf">round</span><span class="p">(</span><span class="n">beta_ad_m6</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;units more compared to individuals with Some High School education.\n&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The intercept is 23.34 , which indicates that the predicted average wage for individuals in the reference category (Some High School) is 23.34 units.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The coefficient on High School Graduate is -6 , which indicates that individuals with a High School Diploma are predicted to earn -6 units less compared to individuals with Some High School education.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The coefficient on Some College is -2.93 , which indicates that individuals with Some College are predicted to earn -2.93 units less compared to individuals with Some High School education.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The coefficient on College Graduate is 3.17 , which indicates that individuals with a College Degree are predicted to earn 3.17 units more compared to individuals with Some High School education.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The coefficient on Advanced Degree is 9.83 , which indicates that individuals with an Advanced Degree are predicted to earn 9.83 units more compared to individuals with Some High School education.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="result-table-with-sjplot-package">
+<h2>Result table with “sjPlot” Package<a class="headerlink" href="#result-table-with-sjplot-package" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">sjPlot</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">IRdisplay</span><span class="p">)</span>
+
+<span class="n">temp_file1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">tempfile</span><span class="p">(</span><span class="n">fileext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;.html&quot;</span><span class="p">)</span>
+
+<span class="c1"># Create a regression table for all models</span>
+<span class="nf">tab_model</span><span class="p">(</span><span class="n">model1</span><span class="p">,</span><span class="w"> </span><span class="n">model2</span><span class="p">,</span><span class="w"> </span><span class="n">model3</span><span class="p">,</span><span class="w"> </span><span class="n">model4</span><span class="p">,</span><span class="w"> </span><span class="n">model5</span><span class="p">,</span><span class="w"> </span><span class="n">model6</span><span class="p">,</span>
+<span class="w">          </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Regression Results&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="n">dv.labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Wage (Continuous Y, Continuous X)&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="s">&quot;Wage (Continuous Y, Dummy X)&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="s">&quot;Wage (Continuous Y, Dummy X, No Intercept)&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="s">&quot;High Wage (Dummy Y, Continuous X)&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="s">&quot;High Wage (Dummy Y, Dummy X)&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="s">&quot;Wage (Continuous Y, Categorical X)&quot;</span><span class="p">),</span>
+<span class="w">          </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp_file1</span><span class="p">)</span>
+
+<span class="c1"># Read the HTML file content</span>
+<span class="n">html_content</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">readLines</span><span class="p">(</span><span class="n">temp_file1</span><span class="p">,</span><span class="w"> </span><span class="n">warn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span>
+
+<span class="c1"># Convert the content to a single HTML string</span>
+<span class="n">html_string</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">paste</span><span class="p">(</span><span class="n">html_content</span><span class="p">,</span><span class="w"> </span><span class="n">collapse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;\n&quot;</span><span class="p">)</span>
+
+<span class="c1"># Display the HTML directly in the Jupyter Notebook</span>
+<span class="nf">display_html</span><span class="p">(</span><span class="n">html_string</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table style="border-collapse:collapse; border:none;">
+<caption style="font-weight: bold; text-align:left;">Regression Results</caption>
+<tr>
+<th style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm;  text-align:left; ">&nbsp;</th>
+<th colspan="3" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">Wage (Continuous Y, Continuous X)</th>
+<th colspan="3" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">Wage (Continuous Y, Dummy X)</th>
+<th colspan="3" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">Wage (Continuous Y, Dummy X, No Intercept)</th>
+<th colspan="3" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">High Wage (Dummy Y, Continuous X)</th>
+<th colspan="3" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">High Wage (Dummy Y, Dummy X)</th>
+<th colspan="3" style="border-top: double; text-align:center; font-style:normal; font-weight:bold; padding:0.2cm; ">Wage (Continuous Y, Categorical X)</th>
+</tr>
+<tr>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  text-align:left; ">Predictors</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">Estimates</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">CI</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">p</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">Estimates</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  ">CI</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  col7">p</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  col8">Estimates</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  col9">CI</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  0">p</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  1">Estimates</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  2">CI</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  3">p</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  4">Estimates</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  5">CI</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  6">p</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  7">Estimates</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  8">CI</td>
+<td style=" text-align:center; border-bottom:1px solid; font-style:italic; font-weight:normal;  9">p</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">(Intercept)</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">22.65</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">21.93&nbsp;&ndash;&nbsp;23.37</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>&lt;0.001</strong></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">24.02</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">23.25&nbsp;&ndash;&nbsp;24.79</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col7"><strong>&lt;0.001</strong></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col8"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col9"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  0"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  1">0.34</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  2">0.33&nbsp;&ndash;&nbsp;0.36</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  3"><strong>&lt;0.001</strong></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  4">0.23</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  5">0.21&nbsp;&ndash;&nbsp;0.25</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  6"><strong>&lt;0.001</strong></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  7">23.34</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  8">19.69&nbsp;&ndash;&nbsp;26.98</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  9"><strong>&lt;0.001</strong></td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">exp2</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.25</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">0.11&nbsp;&ndash;&nbsp;0.40</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "><strong>0.001</strong></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col7"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col8"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col9"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  0"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  1">0.01</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  2">0.00&nbsp;&ndash;&nbsp;0.01</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  3"><strong>&lt;0.001</strong></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  4"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  5"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  6"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  7"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  8"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  9"></td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">sex [1]</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;1.37</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  ">&#45;2.52&nbsp;&ndash;&nbsp;-0.22</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col7"><strong>0.020</strong></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col8">22.65</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col9">21.79&nbsp;&ndash;&nbsp;23.51</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  0"><strong>&lt;0.001</strong></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  1"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  2"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  3"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  4"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  5"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  6"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  7"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  8"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  9"></td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">sex [0]</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col7"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col8">24.02</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col9">23.25&nbsp;&ndash;&nbsp;24.79</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  0"><strong>&lt;0.001</strong></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  1"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  2"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  3"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  4"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  5"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  6"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  7"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  8"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  9"></td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">college or above</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col7"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col8"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col9"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  0"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  1"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  2"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  3"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  4">0.30</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  5">0.27&nbsp;&ndash;&nbsp;0.32</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  6"><strong>&lt;0.001</strong></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  7"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  8"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  9"></td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">education [HSG]</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col7"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col8"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col9"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  0"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  1"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  2"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  3"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  4"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  5"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  6"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  7">&#45;6.00</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  8">&#45;9.82&nbsp;&ndash;&nbsp;-2.19</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  9"><strong>0.002</strong></td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">education [SCL]</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col7"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col8"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col9"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  0"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  1"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  2"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  3"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  4"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  5"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  6"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  7">&#45;2.93</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  8">&#45;6.72&nbsp;&ndash;&nbsp;0.86</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  9">0.130</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">education [CLG]</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col7"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col8"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col9"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  0"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  1"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  2"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  3"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  4"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  5"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  6"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  7">3.17</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  8">&#45;0.61&nbsp;&ndash;&nbsp;6.94</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  9">0.100</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; ">education [AD]</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  "></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col7"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col8"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  col9"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  0"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  1"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  2"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  3"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  4"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  5"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  6"></td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  7">9.83</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  8">5.89&nbsp;&ndash;&nbsp;13.77</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:center;  9"><strong>&lt;0.001</strong></td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm; border-top:1px solid;">Observations</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="3">5150</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="3">5150</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="3">5150</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="3">5150</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="3">5150</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left; border-top:1px solid;" colspan="3">5150</td>
+</tr>
+<tr>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; text-align:left; padding-top:0.1cm; padding-bottom:0.1cm;">R<sup>2</sup> / R<sup>2</sup> adjusted</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="3">0.002 / 0.002</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="3">0.001 / 0.001</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="3">0.555 / 0.554</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="3">0.003 / 0.003</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="3">0.096 / 0.096</td>
+<td style=" padding:0.2cm; text-align:left; vertical-align:top; padding-top:0.1cm; padding-bottom:0.1cm; text-align:left;" colspan="3">0.063 / 0.062</td>
+</tr>
+
+</table>
+</div></div>
+</div>
+</section>
+<section id="result-table-with-stargazer-package">
+<h2>Result table with “stargazer” Package<a class="headerlink" href="#result-table-with-stargazer-package" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">stargazer</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Please cite as: 
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Hlavac, Marek (2022). stargazer: Well-Formatted Regression and Summary Statistics Tables.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> R package version 5.2.3. https://CRAN.R-project.org/package=stargazer 
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can output the table as text, html ot even latex</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">stargazer</span><span class="p">(</span><span class="n">model1</span><span class="p">,</span><span class="w"> </span><span class="n">model2</span><span class="p">,</span><span class="w"> </span><span class="n">model3</span><span class="p">,</span><span class="w"> </span><span class="n">model4</span><span class="p">,</span><span class="w"> </span><span class="n">model5</span><span class="p">,</span><span class="w"> </span><span class="n">model6</span><span class="p">,</span>
+<span class="w">          </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;text&quot;</span><span class="p">,</span><span class="w">  </span><span class="c1"># Use &quot;text&quot; for console output, &quot;html&quot; or &quot;latex&quot;</span>
+<span class="w">          </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Model Estimation Results&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="n">align</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span>
+<span class="w">          </span><span class="n">column.labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Model 1&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s">&quot;Model 2&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s">&quot;Model 3&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s">&quot;Model 4&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s">&quot;Model 5&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s">&quot;Model 6&quot;</span><span class="p">),</span>
+<span class="w">          </span><span class="n">covariate.labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Experience&quot;</span><span class="p">,</span>
+<span class="w">                               </span><span class="s">&quot;Sex (0=Male)&quot;</span><span class="p">,</span>
+<span class="w">                               </span><span class="s">&quot;Sex (1=Female)&quot;</span><span class="p">,</span>
+<span class="w">                               </span><span class="s">&quot;College or Above&quot;</span><span class="p">,</span>
+<span class="w">                               </span><span class="s">&quot;Education (High School Graduate)&quot;</span><span class="p">,</span>
+<span class="w">                               </span><span class="s">&quot;Education (Some College)&quot;</span><span class="p">,</span>
+<span class="w">                               </span><span class="s">&quot;Education (College Graduate)&quot;</span><span class="p">,</span>
+<span class="w">                               </span><span class="s">&quot;Education (Advanced Degree)&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model Estimation Results
+========================================================================================================================================================================================
+                                                                                                   Dependent variable:                                                                  
+                                 -------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                    wage                                                         high_wage                                wage           
+                                         Model 1                 Model 2                   Model 3                   Model 4                   Model 5                  Model 6         
+                                           (1)                     (2)                       (3)                       (4)                       (5)                      (6)           
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Experience                               0.252***                                                                    0.007***                                                           
+                                         (0.073)                                                                     (0.002)                                                            
+                                                                                                                                                                                        
+Sex (0=Male)                                                                              24.019***                                                                                     
+                                                                                           (0.392)                                                                                      
+                                                                                                                                                                                        
+Sex (1=Female)                                                   -1.370**                 22.649***                                                                                     
+                                                                 (0.589)                   (0.439)                                                                                      
+                                                                                                                                                                                        
+College or Above                                                                                                                              0.299***                                  
+                                                                                                                                               (0.013)                                  
+                                                                                                                                                                                        
+Education (High School Graduate)                                                                                                                                       -6.005***        
+                                                                                                                                                                        (1.944)         
+                                                                                                                                                                                        
+Education (Some College)                                                                                                                                                 -2.928         
+                                                                                                                                                                        (1.933)         
+                                                                                                                                                                                        
+Education (College Graduate)                                                                                                                                             3.167*         
+                                                                                                                                                                        (1.924)         
+                                                                                                                                                                                        
+Education (Advanced Degree)                                                                                                                                             9.830***        
+                                                                                                                                                                        (2.009)         
+                                                                                                                                                                                        
+Constant                                22.648***               24.019***                                            0.344***                 0.229***                 23.335***        
+                                         (0.366)                 (0.392)                                             (0.008)                   (0.009)                  (1.857)         
+                                                                                                                                                                                        
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Observations                              5,150                   5,150                     5,150                     5,150                     5,150                    5,150          
+R2                                        0.002                   0.001                     0.555                     0.003                     0.096                    0.063          
+Adjusted R2                               0.002                   0.001                     0.554                     0.003                     0.096                    0.062          
+Residual Std. Error                 20.981 (df = 5148)      20.994 (df = 5148)       20.994 (df = 5148)         0.481 (df = 5148)         0.458 (df = 5148)        20.343 (df = 5145)   
+F Statistic                      11.936*** (df = 1; 5148) 5.414** (df = 1; 5148) 3,204.580*** (df = 2; 5148) 17.646*** (df = 1; 5148) 545.173*** (df = 1; 5148) 85.884*** (df = 4; 5145)
+========================================================================================================================================================================================
+Note:                                                                                                                                                        *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">IRdisplay</span><span class="p">)</span>
+
+<span class="n">html_output</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">capture.output</span><span class="p">(</span>
+<span class="w">    </span><span class="nf">stargazer</span><span class="p">(</span><span class="n">model1</span><span class="p">,</span><span class="w"> </span><span class="n">model2</span><span class="p">,</span><span class="w"> </span><span class="n">model3</span><span class="p">,</span><span class="w"> </span><span class="n">model4</span><span class="p">,</span><span class="w"> </span><span class="n">model5</span><span class="p">,</span><span class="w"> </span><span class="n">model6</span><span class="p">,</span>
+<span class="w">          </span><span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;html&quot;</span><span class="p">,</span><span class="w">  </span><span class="c1"># Use &quot;text&quot; for console output, &quot;html&quot; or &quot;latex&quot;</span>
+<span class="w">          </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Model Estimation Results&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="n">align</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span>
+<span class="w">          </span><span class="n">column.labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Model 1&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s">&quot;Model 2&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s">&quot;Model 3&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s">&quot;Model 4&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s">&quot;Model 5&quot;</span><span class="p">,</span>
+<span class="w">                            </span><span class="s">&quot;Model 6&quot;</span><span class="p">),</span>
+<span class="w">          </span><span class="n">covariate.labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;Experience&quot;</span><span class="p">,</span>
+<span class="w">                               </span><span class="s">&quot;Sex (0=Male)&quot;</span><span class="p">,</span>
+<span class="w">                               </span><span class="s">&quot;Sex (1=Female)&quot;</span><span class="p">,</span>
+<span class="w">                               </span><span class="s">&quot;College or Above&quot;</span><span class="p">,</span>
+<span class="w">                               </span><span class="s">&quot;Education (High School Graduate)&quot;</span><span class="p">,</span>
+<span class="w">                               </span><span class="s">&quot;Education (Some College)&quot;</span><span class="p">,</span>
+<span class="w">                               </span><span class="s">&quot;Education (College Graduate)&quot;</span><span class="p">,</span>
+<span class="w">                               </span><span class="s">&quot;Education (Advanced Degree)&quot;</span><span class="p">)))</span>
+
+<span class="n">html_output</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">paste</span><span class="p">(</span><span class="n">html_output</span><span class="p">,</span><span class="w"> </span><span class="n">collapse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;\n&quot;</span><span class="p">)</span>
+<span class="nf">display_html</span><span class="p">(</span><span class="n">html_output</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<table style="text-align:center"><caption><strong>Model Estimation Results</strong></caption>
+<tr><td colspan="7" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"></td><td colspan="6"><em>Dependent variable:</em></td></tr>
+<tr><td></td><td colspan="6" style="border-bottom: 1px solid black"></td></tr>
+<tr><td style="text-align:left"></td><td colspan="3">wage</td><td colspan="2">high_wage</td><td>wage</td></tr>
+<tr><td style="text-align:left"></td><td>Model 1</td><td>Model 2</td><td>Model 3</td><td>Model 4</td><td>Model 5</td><td>Model 6</td></tr>
+<tr><td style="text-align:left"></td><td>(1)</td><td>(2)</td><td>(3)</td><td>(4)</td><td>(5)</td><td>(6)</td></tr>
+<tr><td colspan="7" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">Experience</td><td>0.252<sup>***</sup></td><td></td><td></td><td>0.007<sup>***</sup></td><td></td><td></td></tr>
+<tr><td style="text-align:left"></td><td>(0.073)</td><td></td><td></td><td>(0.002)</td><td></td><td></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">Sex (0=Male)</td><td></td><td></td><td>24.019<sup>***</sup></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td>(0.392)</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">Sex (1=Female)</td><td></td><td>-1.370<sup>**</sup></td><td>22.649<sup>***</sup></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left"></td><td></td><td>(0.589)</td><td>(0.439)</td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">College or Above</td><td></td><td></td><td></td><td></td><td>0.299<sup>***</sup></td><td></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td><td>(0.013)</td><td></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">Education (High School Graduate)</td><td></td><td></td><td></td><td></td><td></td><td>-6.005<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td><td></td><td>(1.944)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">Education (Some College)</td><td></td><td></td><td></td><td></td><td></td><td>-2.928</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td><td></td><td>(1.933)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">Education (College Graduate)</td><td></td><td></td><td></td><td></td><td></td><td>3.167<sup>*</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td><td></td><td>(1.924)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">Education (Advanced Degree)</td><td></td><td></td><td></td><td></td><td></td><td>9.830<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td><td></td><td>(2.009)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td style="text-align:left">Constant</td><td>22.648<sup>***</sup></td><td>24.019<sup>***</sup></td><td></td><td>0.344<sup>***</sup></td><td>0.229<sup>***</sup></td><td>23.335<sup>***</sup></td></tr>
+<tr><td style="text-align:left"></td><td>(0.366)</td><td>(0.392)</td><td></td><td>(0.008)</td><td>(0.009)</td><td>(1.857)</td></tr>
+<tr><td style="text-align:left"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td colspan="7" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left">Observations</td><td>5,150</td><td>5,150</td><td>5,150</td><td>5,150</td><td>5,150</td><td>5,150</td></tr>
+<tr><td style="text-align:left">R<sup>2</sup></td><td>0.002</td><td>0.001</td><td>0.555</td><td>0.003</td><td>0.096</td><td>0.063</td></tr>
+<tr><td style="text-align:left">Adjusted R<sup>2</sup></td><td>0.002</td><td>0.001</td><td>0.554</td><td>0.003</td><td>0.096</td><td>0.062</td></tr>
+<tr><td style="text-align:left">Residual Std. Error</td><td>20.981 (df = 5148)</td><td>20.994 (df = 5148)</td><td>20.994 (df = 5148)</td><td>0.481 (df = 5148)</td><td>0.458 (df = 5148)</td><td>20.343 (df = 5145)</td></tr>
+<tr><td style="text-align:left">F Statistic</td><td>11.936<sup>***</sup> (df = 1; 5148)</td><td>5.414<sup>**</sup> (df = 1; 5148)</td><td>3,204.580<sup>***</sup> (df = 2; 5148)</td><td>17.646<sup>***</sup> (df = 1; 5148)</td><td>545.173<sup>***</sup> (df = 1; 5148)</td><td>85.884<sup>***</sup> (df = 4; 5145)</td></tr>
+<tr><td colspan="7" style="border-bottom: 1px solid black"></td></tr><tr><td style="text-align:left"><em>Note:</em></td><td colspan="6" style="text-align:right"><sup>*</sup>p<0.1; <sup>**</sup>p<0.05; <sup>***</sup>p<0.01</td></tr>
+</table></div></div>
+</div>
+</section>
+<section id="plotting-coefs-across-models">
+<h2>Plotting Coefs. Across Models<a class="headerlink" href="#plotting-coefs-across-models" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">broom</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">model1_tidy</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">tidy</span><span class="p">(</span><span class="n">model1</span><span class="p">,</span><span class="w"> </span><span class="n">conf.int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="n">model2_tidy</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">tidy</span><span class="p">(</span><span class="n">model2</span><span class="p">,</span><span class="w"> </span><span class="n">conf.int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="n">model3_tidy</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">tidy</span><span class="p">(</span><span class="n">model3</span><span class="p">,</span><span class="w"> </span><span class="n">conf.int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="n">model4_tidy</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">tidy</span><span class="p">(</span><span class="n">model4</span><span class="p">,</span><span class="w"> </span><span class="n">conf.int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="n">model5_tidy</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">tidy</span><span class="p">(</span><span class="n">model5</span><span class="p">,</span><span class="w"> </span><span class="n">conf.int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="n">model6_tidy</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">tidy</span><span class="p">(</span><span class="n">model6</span><span class="p">,</span><span class="w"> </span><span class="n">conf.int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">model1_tidy</span><span class="o">$</span><span class="n">model</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;Model 1&quot;</span>
+<span class="n">model2_tidy</span><span class="o">$</span><span class="n">model</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;Model 2&quot;</span>
+<span class="n">model3_tidy</span><span class="o">$</span><span class="n">model</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;Model 3&quot;</span>
+<span class="n">model4_tidy</span><span class="o">$</span><span class="n">model</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;Model 4&quot;</span>
+<span class="n">model5_tidy</span><span class="o">$</span><span class="n">model</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;Model 5&quot;</span>
+<span class="n">model6_tidy</span><span class="o">$</span><span class="n">model</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;Model 6&quot;</span>
+
+<span class="n">all_models_tidy</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">model1_tidy</span><span class="p">,</span><span class="w"> </span><span class="n">model2_tidy</span><span class="p">,</span><span class="w"> </span><span class="n">model3_tidy</span><span class="p">,</span><span class="w"> </span><span class="n">model4_tidy</span><span class="p">,</span><span class="w"> </span><span class="n">model5_tidy</span><span class="p">,</span><span class="w"> </span><span class="n">model6_tidy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">all_models_tidy</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table class="dataframe">
+<caption>A tibble: 15 × 8</caption>
+<thead>
+	<tr><th scope=col>term</th><th scope=col>estimate</th><th scope=col>std.error</th><th scope=col>statistic</th><th scope=col>p.value</th><th scope=col>conf.low</th><th scope=col>conf.high</th><th scope=col>model</th></tr>
+	<tr><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;chr&gt;</th></tr>
+</thead>
+<tbody>
+	<tr><td>(Intercept)     </td><td>22.648188478</td><td>0.366263962</td><td>61.835700</td><td> 0.000000e+00</td><td>21.930155486</td><td>23.36622147</td><td>Model 1</td></tr>
+	<tr><td>exp2            </td><td> 0.252481098</td><td>0.073080471</td><td> 3.454837</td><td> 5.550694e-04</td><td> 0.109212323</td><td> 0.39574987</td><td>Model 1</td></tr>
+	<tr><td>(Intercept)     </td><td>24.019260589</td><td>0.392497297</td><td>61.195990</td><td> 0.000000e+00</td><td>23.249799112</td><td>24.78872207</td><td>Model 2</td></tr>
+	<tr><td>sex1            </td><td>-1.369847242</td><td>0.588731657</td><td>-2.326777</td><td> 2.001574e-02</td><td>-2.524011445</td><td>-0.21568304</td><td>Model 2</td></tr>
+	<tr><td>sex0            </td><td>24.019260589</td><td>0.392497297</td><td>61.195990</td><td> 0.000000e+00</td><td>23.249799112</td><td>24.78872207</td><td>Model 3</td></tr>
+	<tr><td>sex1            </td><td>22.649413346</td><td>0.438806148</td><td>51.615989</td><td> 0.000000e+00</td><td>21.789166846</td><td>23.50965985</td><td>Model 3</td></tr>
+	<tr><td>(Intercept)     </td><td> 0.343813903</td><td>0.008391896</td><td>40.969753</td><td>7.564777e-318</td><td> 0.327362221</td><td> 0.36026558</td><td>Model 4</td></tr>
+	<tr><td>exp2            </td><td> 0.007033841</td><td>0.001674431</td><td> 4.200735</td><td> 2.705474e-05</td><td> 0.003751245</td><td> 0.01031644</td><td>Model 4</td></tr>
+	<tr><td>(Intercept)     </td><td> 0.228988604</td><td>0.008641188</td><td>26.499666</td><td>3.629399e-145</td><td> 0.212048203</td><td> 0.24592900</td><td>Model 5</td></tr>
+	<tr><td>college_or_above</td><td> 0.299192438</td><td>0.012813968</td><td>23.348930</td><td>1.072089e-114</td><td> 0.274071616</td><td> 0.32431326</td><td>Model 5</td></tr>
+	<tr><td>(Intercept)     </td><td>23.335481384</td><td>1.857052611</td><td>12.565870</td><td> 1.082492e-35</td><td>19.694868695</td><td>26.97609407</td><td>Model 6</td></tr>
+	<tr><td>educationHSG    </td><td>-6.004801706</td><td>1.943741937</td><td>-3.089300</td><td> 2.016993e-03</td><td>-9.815362332</td><td>-2.19424108</td><td>Model 6</td></tr>
+	<tr><td>educationSCL    </td><td>-2.928058322</td><td>1.933296912</td><td>-1.514541</td><td> 1.299500e-01</td><td>-6.718142256</td><td> 0.86202561</td><td>Model 6</td></tr>
+	<tr><td>educationCLG    </td><td> 3.166612260</td><td>1.923954574</td><td> 1.645887</td><td> 9.984806e-02</td><td>-0.605156721</td><td> 6.93838124</td><td>Model 6</td></tr>
+	<tr><td>educationAD     </td><td> 9.830475030</td><td>2.008685205</td><td> 4.893985</td><td> 1.018313e-06</td><td> 5.892597987</td><td>13.76835207</td><td>Model 6</td></tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+
+<span class="n">temp_file2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">tempfile</span><span class="p">(</span><span class="n">fileext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;.jpeg&quot;</span><span class="p">)</span>
+
+<span class="c1"># Construct the plot</span>
+<span class="n">p</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">ggplot</span><span class="p">(</span><span class="n">all_models_tidy</span><span class="p">,</span><span class="w"> </span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">term</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">estimate</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">    </span><span class="nf">geom_errorbar</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">ymin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conf.low</span><span class="p">,</span><span class="w"> </span><span class="n">ymax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conf.high</span><span class="p">),</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">    </span><span class="nf">geom_point</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">21</span><span class="p">,</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;white&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">    </span><span class="nf">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">scales</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;free_x&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">nrow</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">    </span><span class="nf">theme_minimal</span><span class="p">()</span><span class="w"> </span><span class="o">+</span>
+<span class="w">    </span><span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Coefficient Estimates Across Models&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Terms&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Estimate&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span>
+<span class="w">    </span><span class="nf">theme</span><span class="p">(</span><span class="n">axis.text.x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">element_text</span><span class="p">(</span><span class="n">angle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">45</span><span class="p">,</span><span class="w"> </span><span class="n">hjust</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">),</span>
+<span class="w">          </span><span class="n">strip.background</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">element_blank</span><span class="p">(),</span>
+<span class="w">          </span><span class="n">strip.text.x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">element_text</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">12</span><span class="p">))</span>
+
+<span class="c1"># Save the plot with custom dimensions</span>
+<span class="nf">ggsave</span><span class="p">(</span><span class="n">temp_file2</span><span class="p">,</span><span class="w"> </span><span class="n">plot</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">14</span><span class="p">,</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span><span class="p">,</span><span class="w"> </span><span class="n">dpi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">300</span><span class="p">)</span>
+
+<span class="c1"># Display the saved plot in the Jupyter notebook</span>
+<span class="n">IRdisplay</span><span class="o">::</span><span class="nf">display_jpeg</span><span class="p">(</span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">temp_file2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/5be58244de07231ba5395da8a47949b1352d3b38695e851dcff71a569ba32284.jpg" src="_images/5be58244de07231ba5395da8a47949b1352d3b38695e851dcff71a569ba32284.jpg" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "r"
+        },
+        kernelOptions: {
+            name: "ir",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'ir'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup">Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-data">Importing Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-cleaning">Data Cleaning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-analysis">Data Analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-1-continuous-y-and-continuous-x-with-intercept">Case 1: Continuous Y and continuous X with intercept</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-2-continuous-y-and-binary-dummy-x-with-intercept">Case 2: Continuous Y and binary/dummy X with intercept</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-3-continuous-y-and-binary-dummy-x-without-intercept">Case 3: Continuous Y and binary/dummy X without intercept</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-4-binary-dummy-y-and-continuous-x-with-intercept">Case 4: Binary/dummy Y and Continuous X with intercept</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-5-binary-dummy-y-and-binary-dummy-x-with-intercept">Case 5: Binary/dummy Y and Binary/dummy X with intercept</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-6-continuous-y-and-categorical-x-with-intercept">Case 6: Continuous Y and categorical X with intercept</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#result-table-with-sjplot-package">Result table with “sjPlot” Package</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#result-table-with-stargazer-package">Result table with “stargazer” Package</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-coefs-across-models">Plotting Coefs. Across Models</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The Jupyter Book community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
