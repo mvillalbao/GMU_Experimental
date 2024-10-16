@@ -1,6 +1,6 @@
 # ECON 455: Design and Analysis of Experiments
 
-This is a book that contains usefull material created for the Design and Analysis of Experiments course from <a href='https://www.masonkorea.gmu.edu/' target='_blank'>Mason Korea</a>.
+This is a book that contains useful material created for the Design and Analysis of Experiments course from <a href='https://www.masonkorea.gmu.edu/' target='_blank'>Mason Korea</a>.
 
 :::{note}
 The lab materials included were created voluntarily and represent my personal effort. I am not formally affiliated with Mason Korea.
