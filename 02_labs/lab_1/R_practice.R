@@ -1,8 +1,83 @@
-# Author: Matias Villalba & Edgar Castro
-# This is a practice of regression specifications.
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# Lab Session: Data Import, Cleaning, and Regression Analysis in R
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# Author: Matias Villalba
+# Date: 16/10/2024
+# Purpose: This lab session aims to provide hands-on practice with importing various types of data files into R, performing essential data cleaning tasks, and conducting regression analysis.
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-# Setup ========================================================================
+# R Practice ###################################################################
+
+
+## Importing data on R =========================================================
+
+rm(list=ls())
+
+### CSV Files ------------------------------------------------------------------
+
+csv_file <- url("https://raw.githubusercontent.com/mvillalbao/GMU_Experimental/refs/heads/main/01_data/raw_dataset.csv") # replace with path/to/csv_file.csv
+
+data_csv <- read.csv(csv_file)
+
+### Excel Files ----------------------------------------------------------------
+
+xlsx_file <- "https://raw.githubusercontent.com/mvillalbao/GMU_Experimental/refs/heads/main/01_data/raw_dataset.xlsx" # replace with path/to/xlsx_file.xlsx
+
+library(openxlsx)
+data_xlsx <- read.xlsx(xlsx_file, sheet = "Sheet1")
+
+### Stata Files ----------------------------------------------------------------
+
+dta_file <- url("https://raw.githubusercontent.com/mvillalbao/GMU_Experimental/refs/heads/main/01_data/raw_dataset.dta") # replace with path/to/dta_file.dta
+
+library(haven)
+data_dta <- read_dta(dta_file)
+
+### Text Files -----------------------------------------------------------------
+
+txt_file <- url("https://raw.githubusercontent.com/mvillalbao/GMU_Experimental/refs/heads/main/01_data/raw_dataset.txt") # replace with path/to/txt_file.txt
+
+data_txt <- read.table(txt_file, header = TRUE, sep = "\t")
+
+### SPSS Files -----------------------------------------------------------------
+
+sav_file <- url("https://raw.githubusercontent.com/mvillalbao/GMU_Experimental/refs/heads/main/01_data/raw_dataset.sav") # replace with path/to/sav_file.sav
+
+data_sav <- read_sav(sav_file)
+
+
+
+## Data Cleaning Practice ======================================================
+
+csv_file <- url("https://raw.githubusercontent.com/mvillalbao/GMU_Experimental/refs/heads/main/01_data/raw_dataset.csv") # replace with path/to/csv_file.csv
+
+data <- read.csv(csv_file)
+head(data)
+
+# In R, you can generate new variables by simply assigning them to your dataset.
+# Let's say we want to create a new variable 'total_sales' as the sum of 'product_A' and 'product_B'
+data$product_A <- as.numeric(data$product_A) # First we coerce 'product_A' to numeric
+data$total_sales <- rowSums(data[, c("product_A", "product_B")], na.rm = TRUE)
+
+# The 'price' column contains commas instead of points for decimals.
+data$price <- as.numeric(gsub(",", ".", data$price))
+
+# The 'growth_rate' string column contains percentages (e.g., "50%").
+data$growth_rate <- as.numeric(gsub("%", "", data$growth_rate))/100
+
+# Clean 'customer_name' and 'region' column: remove leading/trailing spaces and standardize to lowercase.
+data$customer_name <- tolower(trimws(data$customer_name))
+data$region <- tolower(trimws(data$region))
+
+# For 'sales_target', convert "unavailable" to NA and then convert the column to numeric.
+data$sales_target[data$sales_target == "unavailable"] <- NA
+data$sales_target <- as.numeric(data$sales_target)
+
+
+# Regression Analysis Practical Application ####################################
+
+## Setup =======================================================================
 
 library(readr)
 
@@ -10,7 +85,7 @@ urlfile = "https://raw.githubusercontent.com/mvillalbao/CausalInferenceML/refs/h
 
 data <- read_csv(url(urlfile))
 
-# Data Cleaning ================================================================
+## Data Cleaning ===============================================================
 
 # Create the variable 'high_wage'
 data$high_wage <- ifelse(data$wage > mean(data$wage), 1, 0)
@@ -33,10 +108,9 @@ data$education <- factor(
   levels = c("NONE", "SHS", "HSG", "SCL", "CLG", "AD")
   )
 
-# Data Analysis ================================================================
+## Data Analysis ===============================================================
 
-## Model 1 ---------------------------------------------------------------------
-
+### Model 1: Continuous Y and continuous X with intercept ----------------------
 model1 <- lm(wage ~ exp2, data = data)
 summary(model1)
 
@@ -56,7 +130,7 @@ cat("The intercept is", round(beta_0, 2),
     ", which means that the expected wage for someone with zero years of experience is",
     round(beta_0, 2), "units.\n")
 
-## Model 2 ---------------------------------------------------------------------
+### Model 2: Continuous Y and binary/dummy X with intercept---------------------
 
 data$sex <- as.factor(data$sex)
 model2 <- lm(wage ~ sex, data = data)
@@ -77,7 +151,7 @@ cat("The intercept is", round(beta_0_m2, 2),
     ", which means that the expected wage for males (sex = 0) is", 
     round(beta_0_m2, 2), "units.\n")
 
-## Model 3 ---------------------------------------------------------------------
+### Model 3: Continuous Y and binary/dummy X without intercept------------------
 
 model3 <- lm(wage ~ sex - 1, data = data) # Removing the intercept
 summary(model3)
@@ -95,7 +169,7 @@ cat("The coefficient for females (sex = 1) is", round(beta_female_m3, 2),
 cat("The coefficient for males (sex = 0) is", round(beta_male_m3, 2), 
     ", which indicates that the expected wage for males is", round(beta_male_m3, 2), "units.\n")
 
-## Model 4 ---------------------------------------------------------------------
+### Model 4: Binary/dummy Y and Continuous X with intercept --------------------
 
 model4 <- lm(high_wage ~ exp2, data = data)
 summary(model4)
@@ -115,7 +189,7 @@ cat("The coefficient on experience is", round(beta_1_m4, 4),
     ", which indicates that for each additional year of experience, the probability of earning a high wage is predicted to increase", 
     round(beta_1_m4 * 100, 2), "percentage points.\n")
 
-## Model 5 ---------------------------------------------------------------------
+### Model 5: Binary/dummy Y and Binary/dummy X with intercept ------------------
 
 model5 <- lm(high_wage ~ college_or_above, data = data)
 summary(model5)
@@ -135,7 +209,7 @@ cat("The coefficient on college_or_above is", round(beta_1_m5, 4),
     ", which indicates that having a college degree (or higher) is predicted to increase the probability of earning a high wage by", 
     round(beta_1_m5 * 100, 2), "percentage points compared to those without a college degree.\n")
 
-## Model 6 ---------------------------------------------------------------------
+### Model 6: Continuous Y and categorical X with intercept ---------------------
 
 table(data$education)
 
@@ -175,7 +249,7 @@ cat("The coefficient on Advanced Degree is", round(beta_ad_m6, 2),
     round(beta_ad_m6, 2), "units more compared to individuals with Some High School education.\n")
 
 
-# Result table with "stargazer" Package ========================================
+## Result table with "stargazer" Package =======================================
 
 library(stargazer)
 library(rstudioapi) # To display table on RStudio directly
@@ -204,7 +278,7 @@ stargazer(model1, model2, model3, model4, model5, model6,
 
 viewer(temp_file)
 
-# Result table with "sjPlot" Package ===========================================
+## Result table with "sjPlot" Package ==========================================
 
 library(sjPlot)
 
@@ -219,7 +293,7 @@ tab_model(model1, model2, model3, model4, model5, model6,
                         "Wage (Continuous Y, Categorical X)"))
 
 
-# Plotting Coefs. Across Models ================================================
+## Plotting Coefs. Across Models ===============================================
 
 library(ggplot2)
 library(broom)

@@ -1,0 +1,10 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+parts:
+ - caption: Lab 1
+   chapters:
+   - file: 02-labs/lab_1/R_practice.ipynb
+   - file: 02-labs/lab_1/regressions.ipynb
